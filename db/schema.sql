@@ -1,11 +1,12 @@
-DROP IF EXISTS employee_db;
+DROP DATABASE IF EXISTS employee_db;
 CREATE DATABASE employee_db;
 
 \c employee_db;
 
-CREATE TABLE deparments (
+CREATE TABLE departments (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(30) NOT NULL
+  name VARCHAR(30) NOT NULL,
+  manager_id INT NOT NULL
 );
 
 CREATE TABLE roles (

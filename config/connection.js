@@ -1,14 +1,5 @@
-const express = require('express');
-
 // Import and require Pool (node-postgres)
 const { Pool } = require('pg');
-
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 // Connect to database
 const pool = new Pool(
@@ -23,8 +14,4 @@ const pool = new Pool(
 
 pool.connect();
 
-// complete the rest of file
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+module.exports = pool;
