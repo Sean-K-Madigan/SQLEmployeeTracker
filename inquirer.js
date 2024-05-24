@@ -1,6 +1,6 @@
 // Get required modules
 const inquirer = require('inquirer');
-const { action, addDepartment, addRole, addEmployee, updateEmployeeRole } = require('./lib/questions');
+const { action, addDepartment, deleteDepartment, addRole, deleteRole, addEmployee, deleteEmployee, updateEmployeeRole } = require('./lib/questions');
 const queries = require('./lib/queries');
 
 async function main() {
@@ -29,6 +29,12 @@ async function main() {
         await queries.addDepartment(departmentAnswers.department);
         console.log('Department added successfully.');
         break;
+
+      // case 'Delete a department':
+      //   const deleteDepartmentAnswers = await inquirer.prompt(deleteDepartment);
+      //   await queries.deleteDepartment(deleteDepartmentAnswers.department);
+      //   console.log('Department deleted successfully.');
+      //   break;
         
       case 'Add a role':
         const roleAnswers = await inquirer.prompt(addRole);
@@ -45,7 +51,8 @@ async function main() {
       case 'Update an employee role':
         const updateAnswers = await inquirer.prompt(updateEmployeeRole);
         await queries.updateRole(updateAnswers.employee, updateAnswers.newRole);
-        await queries.updateEmployeeManager()
+        // Use this code to update the employee manager in table
+        // await queries.updateEmployeeManager()
         console.log('Employee role updated successfully.');
         break;
         
